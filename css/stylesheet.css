@@ -1,0 +1,28 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Se escrolea con sutileza */
+    scroll-behavior: smooth; }
+  
+  /* BODY */
+  body {
+    background-image: linear-gradient(to bottom, #5EE6EB, #4D77FF); }
+  
+  li a {
+    box-shadow: 0 0 5px black; }
+  
+  .badge {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px; }
+
+.resultado{
+    color: white;
+    font-size: x-large;
+}
+.datosVehiculo{
+  color: white;
+  text-shadow: 0 0 8px black;
+}
