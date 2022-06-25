@@ -8,8 +8,13 @@
   
   /* BODY */
   body {
-    background-image: linear-gradient(to bottom, #5EE6EB, #4D77FF); }
+    background-image: linear-gradient(to bottom, #5EE6EB, #4D77FF); 
+    /* background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+background-position: center;
+  margin: 100px; */
   
+  }
   li a {
     box-shadow: 0 0 5px black; }
   

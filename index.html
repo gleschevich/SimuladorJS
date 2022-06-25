@@ -9,8 +9,10 @@
     
     <!-- MI STYLESHEET -->
     <link rel="stylesheet" href="css/stylesheet.css">
-    <!-- MI JAVASCRIPT -->
+    <!-- MIS JAVASCRIPT -->
     <script defer src="js/practica.js"></script> 
+    <script  src="js/clases.js"></script> 
+    <script  src="js/JSON.js"></script> 
     <!-- FONT AWESOME -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Animate css -->
@@ -20,10 +22,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-
-  
-  <!-- FIN DEL HEADER -->
 
     <main>
         <div class="badge bg-primary text-wrap">
@@ -31,8 +29,17 @@
         </div>
        
         <div class="container col-xl-4">
-
-            <!-- Datos del vehículo  -->
+            <!-- Datos del usuario -->
+            <div class="mb-3">
+                <label class="datosVehiculo" for="nombreUser">Ingrese su nombre completo:</label>
+                <input class="form-control" type="text" id="nombreUser" placeholder="Nombre y apellido">
+            </div>
+            <div class="mb-3">
+                <label class="datosVehiculo" for="emailUser">Email:</label>
+                <input class="form-control" type="email" id="emailUser" placeholder="Correo electrónico">
+            </div>
+            
+            <!-- Datos del vehículo -->
             <div class="mb-3">
                 <label class="datosVehiculo" for="marca">Marca:</label>
                 <select id="marca">
@@ -64,7 +71,7 @@
             <!-- Año del vehículo -->
             <div class="mb-3">
                 <label class="datosVehiculo" for="tipoSeguro">Año patentamiento:</label>
-                <input class="form-control" id="año" type="number" value =2010 />
+                <input  id="año" type="number" value =2010 />
             </div>
         
             <!--Tipo de seguro a cotizar-->
@@ -74,7 +81,7 @@
 
                     <option id="terceros" selected>Terceros</option>
                     
-                    <option id="terceros-completo">Terceros completo</option>
+                    <option id="terceros-completo">Terceros Completo</option>
                     
                     <option id="todo-riesgo" >Todo Riesgo</option>
                 </select>
@@ -97,7 +104,7 @@
  <!-- PIE DE PAGINA -->
  <div class="container-fluid ">
     <footer class="py-3 my-4">
-      <p class="text-center text-white">© 2022   German Leschevich, Inc - Coderhouse JS - Calculadora</p>
+      <p class="text-center text-white">© 2022   German Leschevich, Inc - Coderhouse JS - Cotizador de Seguros</p>
     </footer>
   </div>
 
