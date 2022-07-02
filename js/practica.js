@@ -1,5 +1,7 @@
+
 //Declaracion de variables globales
 
+let btn = document.querySelector('#cotizar-boton');
 let datosUser;
 let datosVehiculo;
 let tipoSeguro;
@@ -41,17 +43,43 @@ function unStore(){
 
    
 //Evento y listener que espera el click en botón para realizar la cotizacion
-document.querySelector('#cotizar-boton').addEventListener('click', () =>{
+    btn.addEventListener('click', () =>{
         
         //INTERACCION CON EL DOM
         obtenerDatosDOM();
         let cotizador = new Cotizador(datosVehiculo,tipoDeSeguroJSON,costoBase);
         cotizacion = cotizador.cotizar(tipoSeguro);
         if (isNaN(cotizacion))
-            document.querySelector('#cotizar').innerHTML= "Ingrese números válidos"; 
+        swal({
+            title: 'Error!',
+            text: "Ingrese números válidos",
+            icon: 'error',
+            button: 'OK'
+        })
+     ; 
+     else
         if (datosUser.NyA===""||datosUser.email==="")
-            document.querySelector('#cotizar').innerHTML= "Ingrese sus datos"; 
-        else 
-            document.querySelector('#cotizar').innerHTML= "Hola " + datosUser.NyA + ", tu cotizacion para tu "+ datosVehiculo.marca +" "+datosVehiculo.modelo+" "+ datosVehiculo.año+ " es: "+ cotizacion;
+        swal({
+            title: 'Error!',
+            text: "Ingrese sus datos",
+            icon: 'error',
+            button: 'OK'
+        })
+     ;  
+     else
+        if (cotizacion!=0)
+        swal({
+            title: 'Tu presupuesto se generó exitosamente!',
+            text: "Hola " + datosUser.NyA + ", tu cotizacion para tu "+ datosVehiculo.marca +" "+datosVehiculo.modelo+" "+ datosVehiculo.año+ " es: $"+ cotizacion,
+            icon: 'success',
+            button: 'Ok, gracias!'
+        })
+    else
+    swal({
+        title: 'Error!',
+        text: "Ingrese año válido",
+        icon: 'error',
+        button: 'OK'
+    })
 
 });

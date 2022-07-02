@@ -3,12 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     /* Se escrolea con sutileza */
     scroll-behavior: smooth; }
   
   /* BODY */
   body {
     background-image: linear-gradient(to bottom, #5EE6EB, #4D77FF); 
+    
     /* background-image: url("../img/background.png");
     background-repeat: no-repeat;
 background-position: center;
@@ -21,7 +23,8 @@ background-position: center;
   .badge {
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px; 
+  box-shadow: 1px 1px 1px 1px black;}
 
 .resultado{
     color: white;
@@ -30,4 +33,44 @@ background-position: center;
 .datosVehiculo{
   color: white;
   text-shadow: 0 0 8px black;
+  
+}
+.barra-top{
+  display: flex;
+  flex-direction: row;
+
+  background-color: rgb(1, 1, 87);
+  box-shadow: 2px 2px 2px black;
+
+  
+}
+.titulo{
+  display: flex;
+  flex-direction: row;
+  
+  color:white;
+  text-decoration: none;
+  font-size: xx-large;
+  text-shadow: 0 0 9px black;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 20px;
+  
+}
+.titulo-medio{
+  color: white;
+  text-shadow: 0 0 9px black;
+
+}
+#cotizar-boton{
+  text-shadow: 0 0 9px black;
+}
+.btn{
+  box-shadow: 2px 2px black;
+}
+.logo{
+  display: flex;
+  flex-direction: row;
+ 
+  width: 65px;
+  height: 70px;
 }

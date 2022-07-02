@@ -72,7 +72,7 @@ class Cotizador {
 									if(datosVehiculo.año===2022)
 										cotizacion+= cotizacion * 0.10;
 										else 
-										   cotizacion= document.querySelector('#cotizar').innerHTML= "Ingrese año válido"; 
+											return cotizacion =0;
 		cotizacion=cotizacion.toFixed(2);
 		return cotizacion;  
 	}
