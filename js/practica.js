@@ -4,8 +4,10 @@
 let btn = document.querySelector('#cotizar-boton');
 let datosUser;
 let datosVehiculo;
-let tipoSeguro;
+let tipoSeguroElegido;
+let tipoSeguroJSON;
 let cotizacion;
+const URL = 'js/tipoSeguro.json';
 const costoBase=3000;
 
 
@@ -22,10 +24,10 @@ function obtenerDatosDOM(){
         año: parseInt(document.querySelector('#año').value)
      }
      store(datosUser,datosVehiculo);
-     tipoSeguro = document.querySelector('#tipoSeguro').value;
+     tipoSeguroElegido = document.querySelector('#tipoSeguro').value;
      cotizacion=costoBase;
-
 }
+
 //Funcion que guarda en Storage los datos del vehículo y del usuario
 function store(datosUser, datosVehiculo){
      let datosU = JSON.stringify(datosUser);
@@ -33,6 +35,7 @@ function store(datosUser, datosVehiculo){
      localStorage.setItem("datosUser", datosU);
      localStorage.setItem("datosVehiculo", datosV);
 }
+
 //Recupera datos guardados en STORAGE
 function unStore(){ 
     if ((localStorage.getItem("datosUser")) && (localStorage.getItem("datosVehiculo")))
@@ -40,15 +43,18 @@ function unStore(){
         datosVehiculo=JSON.parse(localStorage.getItem("datosVehiculo"));
     }
 }
-
    
 //Evento y listener que espera el click en botón para realizar la cotizacion
     btn.addEventListener('click', () =>{
         
         //INTERACCION CON EL DOM
         obtenerDatosDOM();
-        let cotizador = new Cotizador(datosVehiculo,tipoDeSeguroJSON,costoBase);
-        cotizacion = cotizador.cotizar(tipoSeguro);
+
+        //Crea el objeto Cotizador que contiene el metodo cotizar
+        let cotizador = new Cotizador(datosVehiculo,tipoSeguroJSON,costoBase);
+        cotizacion = cotizador.cotizar(tipoSeguroElegido);
+        
+        //Si faltan datos o se ingresa año erroneo muestra mensaje, si no muestra cotizacion del vehículo
         if (isNaN(cotizacion))
         swal({
             title: 'Error!',

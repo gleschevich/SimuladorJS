@@ -9,6 +9,7 @@ class Cotizador {
 		console.log(datosUser);
 		console.log(datosVehiculo);
 		
+		//Suma a cotización del vehículo segun marca 
 		switch (datosVehiculo.marca){
 			case "Toyota": 
 				cotizacion+= cotizacion * 0.05;
@@ -46,14 +47,17 @@ class Cotizador {
 				break;
 		} 
 		
-		//Recorre arreglos de objetos y asigna precio segun tipo de seguro
-		for (let x of tipoDeSeguroJSON) {
+		//Suma a la cotización el valor del tipo de seguro elegido, obtenido del JSON
+		for (let x of tipoSeguroJSON) {
 			console.log(x.tipo + ' ' + x.valor);
-			if (x.tipo === tipoSeguro) {
+			if (x.tipo === tipoSeguroElegido) {
 				cotizacion+= cotizacion * x.valor;
 				break;
 			}
 		}
+
+		
+		//Suma a cotización el valor según el año del vehículo
 		if (datosVehiculo.año>=1960 && datosVehiculo.año <1999)
 			cotizacion+= cotizacion * 0.01;
 			else
@@ -76,6 +80,7 @@ class Cotizador {
 		cotizacion=cotizacion.toFixed(2);
 		return cotizacion;  
 	}
+	
 	
 }
 
