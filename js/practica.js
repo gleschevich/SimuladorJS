@@ -43,43 +43,36 @@ function unStore(){
         datosVehiculo=JSON.parse(localStorage.getItem("datosVehiculo"));
     }
 }
-   
-//Evento y listener que espera el click en botón para realizar la cotizacion
-    btn.addEventListener('click', () =>{
-        
-        //INTERACCION CON EL DOM
-        obtenerDatosDOM();
 
-        //Crea el objeto Cotizador que contiene el metodo cotizar
-        let cotizador = new Cotizador(datosVehiculo,tipoSeguroJSON,costoBase);
-        cotizacion = cotizador.cotizar(tipoSeguroElegido);
-        
-        //Si faltan datos o se ingresa año erroneo muestra mensaje, si no muestra cotizacion del vehículo
-        if (isNaN(cotizacion))
-        swal({
-            title: 'Error!',
-            text: "Ingrese números válidos",
-            icon: 'error',
-            button: 'OK'
-        })
-     ; 
-     else
-        if (datosUser.NyA===""||datosUser.email==="")
-        swal({
-            title: 'Error!',
-            text: "Ingrese sus datos",
-            icon: 'error',
-            button: 'OK'
-        })
-     ;  
-     else
-        if (cotizacion!=0)
-        swal({
-            title: 'Tu presupuesto se generó exitosamente!',
-            text: "Hola " + datosUser.NyA + ", tu cotizacion para tu "+ datosVehiculo.marca +" "+datosVehiculo.modelo+" "+ datosVehiculo.año+ " es: $"+ cotizacion,
-            icon: 'success',
-            button: 'Ok, gracias!'
-        })
+
+//Si faltan datos o se ingresa año erroneo muestra mensaje, si no muestra cotizacion del vehículo
+function muestraCotizacion(){
+
+    if (isNaN(cotizacion))
+    swal({
+        title: 'Error!',
+        text: "Ingrese números válidos",
+        icon: 'error',
+        button: 'OK'
+    })
+    ; 
+    else
+    if (datosUser.NyA===""||datosUser.email==="")
+    swal({
+        title: 'Error!',
+        text: "Ingrese sus datos",
+        icon: 'error',
+        button: 'OK'
+    })
+    ;  
+    else
+    if (cotizacion!=0)
+    swal({
+        title: 'Tu presupuesto se generó exitosamente!',
+        text: "Hola " + datosUser.NyA + ", tu cotizacion para tu "+ datosVehiculo.marca +" "+datosVehiculo.modelo+" "+ datosVehiculo.año+ " es: $"+ cotizacion,
+        icon: 'success',
+        button: 'Ok, gracias!'
+    })
     else
     swal({
         title: 'Error!',
@@ -87,5 +80,19 @@ function unStore(){
         icon: 'error',
         button: 'OK'
     })
+}
+    
+    //Crea el objeto Cotizador que contiene el metodo cotizar y llama al metodo
+function creaCotizador(){
 
+    let cotizador = new Cotizador(datosVehiculo,tipoSeguroJSON,costoBase);
+    cotizacion = cotizador.cotizar(tipoSeguroElegido);
+}
+   
+//Evento y listener que espera el click en botón para realizar la cotizacion
+    btn.addEventListener('click', () =>{
+
+        obtenerDatosDOM();
+        creaCotizador();
+        muestraCotizacion();
 });
